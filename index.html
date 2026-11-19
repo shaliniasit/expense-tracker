@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div class="brand-mark">◔</div>
+      <p class="eyebrow">PERSONAL FINANCE DASHBOARD</p>
+      <h1>Smart Expense Tracker</h1>
+      <p class="subtitle">Track your income and expenses easily and stay on top of your budget.</p>
+    </header>
+
+    <section class="summary-grid" aria-label="Account summary">
+      <article class="summary-card income-card">
+        <div class="summary-top"><span class="summary-icon">↗</span><span>Total Income</span></div>
+        <p class="summary-amount" id="totalIncome">₹0</p>
+      </article>
+      <article class="summary-card expense-card">
+        <div class="summary-top"><span class="summary-icon">↓</span><span>Total Expense</span></div>
+        <p class="summary-amount" id="totalExpense">₹0</p>
+      </article>
+      <article class="summary-card balance-card">
+        <div class="summary-top"><span class="summary-icon">▣</span><span>Balance</span></div>
+        <p class="summary-amount" id="balance">₹0</p>
+      </article>
+    </section>
+
+    <section class="panel add-panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">KEEP IT UPDATED</p><h2>Add New Transaction</h2></div>
+      </div>
+      <form id="transactionForm" class="transaction-form">
+        <label class="field">
+          <span>Title</span>
+          <input id="title" type="text" placeholder="e.g. Groceries" maxlength="45" required>
+        </label>
+        <label class="field">
+          <span>Amount (₹)</span>
+          <input id="amount" type="number" placeholder="e.g. 500" min="1" step="0.01" required>
+        </label>
+        <label class="field">
+          <span>Type</span>
+          <select id="type">
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Category</span>
+          <select id="category">
+            <option value="Food">Food</option>
+            <option value="Travel">Travel</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Bills">Bills</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+        <button class="add-button" type="submit"><span>＋</span> Add</button>
+      </form>
+      <p class="form-message" id="formMessage" role="status"></p>
+    </section>
+
+    <section class="bottom-grid">
+      <section class="panel history-panel">
+        <div class="panel-title-row">
+          <div><p class="eyebrow">YOUR ACTIVITY</p><h2>History</h2></div>
+          <button class="text-button" id="clearAll" type="button">Clear all</button>
+        </div>
+        <div class="filters" id="filters" aria-label="Filter transactions">
+          <button class="filter active" data-filter="All" type="button">All</button>
+          <button class="filter" data-filter="Food" type="button">Food</button>
+          <button class="filter" data-filter="Travel" type="button">Travel</button>
+          <button class="filter" data-filter="Shopping" type="button">Shopping</button>
+          <button class="filter" data-filter="Bills" type="button">Bills</button>
+          <button class="filter" data-filter="Other" type="button">Other</button>
+        </div>
+        <ul class="transaction-list" id="transactionList"></ul>
+        <p class="empty-state" id="emptyState">No transactions yet. Add your first income or expense above.</p>
+      </section>
+
+      <section class="panel breakdown-panel">
+        <div><p class="eyebrow">WHERE YOUR MONEY GOES</p><h2>Spending Breakdown</h2></div>
+        <div class="chart-area">
+          <div class="donut" id="donut" role="img" aria-label="Spending breakdown chart">
+            <div class="donut-hole"><span>Expenses</span><strong id="chartTotal">₹0</strong></div>
+          </div>
+          <ul class="legend" id="legend"></ul>
+        </div>
+        <p class="chart-note">Category percentages are calculated from your total expenses.</p>
+      </section>
+    </section>
+    <footer>Made with HTML, CSS &amp; JavaScript <span>•</span> Your data stays in this browser</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
